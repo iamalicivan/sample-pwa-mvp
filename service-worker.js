@@ -1,14 +1,14 @@
-const CACHE_NAME = "sample-pwa-v1";
+const CACHE_NAME = "sample-pwa-v2";
 const APP_ASSETS = [
-  "./",
-  "./index.html",
-  "./page-two.html",
-  "./styles.css",
-  "./app.js",
-  "./manifest.webmanifest",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png",
-  "./icons/icon-180.png",
+  "/",
+  "/index.html",
+  "/page-two.html",
+  "/styles.css",
+  "/app.js",
+  "/manifest.webmanifest",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
+  "/icons/icon-180.png",
 ];
 
 self.addEventListener("install", (event) => {
@@ -30,17 +30,29 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request).catch(async () => {
+        const cachedPage = await caches.match("/");
+        return cachedPage || caches.match("/index.html");
+      })
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
         return cachedResponse;
       }
 
-      return fetch(event.request).then((networkResponse) => {
-        const responseClone = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
-        return networkResponse;
-      });
+      return fetch(event.request)
+        .then((networkResponse) => {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+          return networkResponse;
+        })
+        .catch(() => caches.match("/index.html"));
     })
   );
 });
