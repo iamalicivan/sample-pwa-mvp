@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Sample PWA" />
+    <title>Second Page | Sample PWA</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card hero-card alt-card">
+        <p class="eyebrow">Page Two</p>
+        <h1>Offline-friendly screen</h1>
+        <p class="lede">
+          If this page still opens after you install the app and lose connection, the PWA basics are working.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="index.html">Back home</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>iPhone note</h2>
+        <p>
+          iPhone usually installs PWAs from Safari using Share -> Add to Home Screen instead of a browser install prompt.
+        </p>
+      </section>
+    </main>
+
+    <nav class="tabbar" aria-label="Primary navigation">
+      <a class="tab" href="index.html">Home</a>
+      <a class="tab active" href="page-two.html">Second page</a>
+    </nav>
+
+    <script src="app.js"></script>
+  </body>
+</html>

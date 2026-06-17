@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Sample PWA" />
+    <title>Sample PWA</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card hero-card">
+        <p class="eyebrow">MVP PWA</p>
+        <h1>Sample install test app</h1>
+        <p class="lede">
+          This is a minimal two-page PWA for testing install behavior on Android and iPhone.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="page-two.html">Open page two</a>
+          <button class="button secondary" id="installButton" hidden>Install app</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Install check</h2>
+        <ul class="checklist">
+          <li>Standalone manifest configured</li>
+          <li>Offline cache enabled</li>
+          <li>Home screen icon included</li>
+        </ul>
+      </section>
+    </main>
+
+    <nav class="tabbar" aria-label="Primary navigation">
+      <a class="tab active" href="index.html">Home</a>
+      <a class="tab" href="page-two.html">Second page</a>
+    </nav>
+
+    <script src="app.js"></script>
+  </body>
+</html>
